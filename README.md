@@ -1,2 +1,2 @@
 # MakeABurger
-Create a customer burger React app
+Create a custom burger app and watch it be built before your eyes. Built using React.

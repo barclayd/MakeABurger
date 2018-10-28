@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
 import Layout from './components/Layout/Layout';
+import MakeABurger from "./containers/MakeABurger/MakeABurger";
 
 class App extends Component {
   render() {
     return (
       <div>
         <Layout>
-            <p>Test paragraph</p>
+            <MakeABurger />
         </Layout>
       </div>
     );

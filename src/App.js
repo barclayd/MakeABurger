@@ -3,6 +3,7 @@ import Layout from './hoc/Layout/Layout';
 import BurgerBuilder from "./containers/MakeABurger/BurgerBuilder";
 
 class App extends Component {
+
   render() {
     return (
       <div>

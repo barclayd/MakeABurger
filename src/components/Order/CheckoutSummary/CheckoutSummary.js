@@ -8,7 +8,8 @@ const checkoutSummary = (props) => {
     console.log(props);
     return (
         <div className={classes.CheckoutSummary}>
-            <h1>Enjoy your burger!</h1>
+            <h1>Voila!</h1>
+            <h3>Say hello to your mouth-watering new creation</h3>
             <div style={{width: '100%', margin: 'auto'}}>
                 <Burger ingredients={props.ingredients}/>
             </div>
@@ -20,7 +21,7 @@ const checkoutSummary = (props) => {
             <Button
                 btnType={"Success"}
                 clicked={props.checkoutContinued}>
-                CONTNUE
+                CONTINUE
             </Button>
         </div>
     )

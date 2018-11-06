@@ -8,12 +8,60 @@ import classes from './ContactData.css'
 class ContactData extends Component {
 
     state = {
-        name: '',
-        email: '',
-        address: {
-            houseName: '',
-            street: '',
-            postcode: ''
+       orderForm: {
+               name: {
+                   elementType: 'input',
+                   elementConfig: {
+                        type: 'text',
+                        placeholder: 'Your Name'
+                   },
+                   value: ''
+               },
+               street: {
+                   elementType: 'input',
+                   elementConfig: {
+                       type: 'text',
+                       placeholder: 'Street'
+                   },
+                   value: ''
+               },
+               postcode: {
+                   elementType: 'input',
+                   elementConfig: {
+                       type: 'text',
+                       placeholder: 'POSTCODE'
+                   },
+                   value: '',
+               },
+               country: {
+                   elementType: 'input',
+                   elementConfig: {
+                       type: 'text',
+                       placeholder: 'Country'
+                   },
+                   value: '',
+               },
+               email: {
+                   elementType: 'input',
+                   elementConfig: {
+                       type: 'email',
+                       placeholder: 'email'
+                   },
+                   value: '',
+               },
+                deliveryMethod: {
+                    elementType: 'select',
+                    elementConfig: {
+                        options: [{
+                            value: 'deliveroo',
+                            displayValue: 'DeliverRoo'
+                        }, {
+                            value: 'ubereats',
+                            displayValue: 'Uber Eats'
+                        }]
+                    },
+                    value: ''
+                }
         },
         loading: false
     };
@@ -57,7 +105,7 @@ class ContactData extends Component {
         let form =
             (
             <form>
-                <Input inputtype='input' type='text' name='name' placeholder='Your name' />
+                <Input elementType='...' elementConfig='...' value='...'/>
                 <Input inputtype='input' type='email' name='email' placeholder='Your email' />
                 <Input inputtype='input' type='text' name='street' placeholder='Street Address' />
                 <Input inputtype='input' type='text' name='postal' placeholder='Post Code' />

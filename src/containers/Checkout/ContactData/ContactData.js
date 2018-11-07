@@ -70,9 +70,7 @@ class ContactData extends Component {
                        placeholder: 'Email address'
                    },
                    value: '',
-                   validation: {
-                       required: true
-                   },
+                   validation: {},
                    valid: false,
                    touched: false
                },
@@ -91,7 +89,10 @@ class ContactData extends Component {
                                 displayValue: 'Pickup in Store'
                             }]
                     },
-                    value: '',
+                    validation: {
+                        required: false
+                    },
+                    value: 'localpickup',
                     valid: true
                 }
         },
@@ -124,7 +125,7 @@ class ContactData extends Component {
            ...updatedOrderForm[inputIdentifier]
        };
        updatedFormElement.value = event.target.value;
-       updatedFormElement.valid = this.checkValidity(updatedFormElement.value, updatedFormElement.valid);
+       updatedFormElement.valid = this.checkValidity(updatedFormElement.value, updatedFormElement.validation);
        updatedFormElement.touched = true;
        updatedOrderForm[inputIdentifier] = updatedFormElement;
 

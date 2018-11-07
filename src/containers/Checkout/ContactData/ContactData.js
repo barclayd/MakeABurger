@@ -91,13 +91,15 @@ class ContactData extends Component {
                                 displayValue: 'Pickup in Store'
                             }]
                     },
-                    value: ''
+                    value: '',
+                    valid: true
                 }
         },
-        loading: false
+        loading: false,
+        formIsValid: false
     };
 
-    checkValidity(value, rules) {
+    checkValidity =(value, rules) => {
         let isValid = true;
 
         if(rules.required) {
@@ -112,7 +114,7 @@ class ContactData extends Component {
             isValid = value.length <= rules.maxLength && isValid;
         }
         return isValid;
-    }
+    };
 
     inputChangedHandler = (event, inputIdentifier) => {
         const updatedOrderForm = {
@@ -122,12 +124,18 @@ class ContactData extends Component {
            ...updatedOrderForm[inputIdentifier]
        };
        updatedFormElement.value = event.target.value;
-       updatedFormElement.valid = this.checkValidity(updatedFormElement.value, updatedFormElement.validation);
+       updatedFormElement.valid = this.checkValidity(updatedFormElement.value, updatedFormElement.valid);
        updatedFormElement.touched = true;
        updatedOrderForm[inputIdentifier] = updatedFormElement;
-       console.log(updatedFormElement);
+
+       let formIsValid = true;
+       for(let inputIdentifier in updatedOrderForm) {
+           formIsValid = updatedOrderForm[inputIdentifier].valid && formIsValid;
+       }
+       console.log(formIsValid);
        this.setState({
-           orderForm: updatedOrderForm
+           orderForm: updatedOrderForm,
+           formIsValid: formIsValid
        });
     };
 
@@ -188,7 +196,7 @@ class ContactData extends Component {
                         changed={(event) => this.inputChangedHandler(event, formElement.id)}
                     />
                 ))}
-                <Button btnType='Success'>PLACE ORDER</Button>
+                <Button disabled={!this.state.formIsValid}btnType='Success'>PLACE ORDER</Button>
             </form>
             );
         if(this.state.loading) {

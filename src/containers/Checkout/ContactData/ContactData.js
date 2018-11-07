@@ -13,31 +13,33 @@ class ContactData extends Component {
                    elementType: 'input',
                    elementConfig: {
                         type: 'text',
-                        placeholder: 'Your Name'
+                        placeholder: 'Name'
                    },
                    value: '',
                    validation: {
                        required: true
                    },
-                   valid: false
+                   valid: false,
+                   touched: false
                },
                street: {
                    elementType: 'input',
                    elementConfig: {
                        type: 'text',
-                       placeholder: 'Street'
+                       placeholder: 'Address'
                    },
                    value: '',
                    validation: {
                        required: true
                    },
-                   valid: false
+                   valid: false,
+                   touched: false
                },
                postcode: {
                    elementType: 'input',
                    elementConfig: {
                        type: 'text',
-                       placeholder: 'POSTCODE'
+                       placeholder: 'Postcode'
                    },
                    value: '',
                    validation: {
@@ -45,7 +47,8 @@ class ContactData extends Component {
                        minLength: 5,
                        maxLength: 8
                    },
-                   valid: false
+                   valid: false,
+                   touched: false
                },
                country: {
                    elementType: 'input',
@@ -57,19 +60,21 @@ class ContactData extends Component {
                    validation: {
                        required: true
                    },
-                   valid: false
+                   valid: false,
+                   touched: false
                },
                email: {
                    elementType: 'input',
                    elementConfig: {
                        type: 'email',
-                       placeholder: 'email'
+                       placeholder: 'Email address'
                    },
                    value: '',
                    validation: {
                        required: true
                    },
-                   valid: false
+                   valid: false,
+                   touched: false
                },
                 deliveryMethod: {
                     elementType: 'select',
@@ -92,7 +97,7 @@ class ContactData extends Component {
         loading: false
     };
 
-    static checkValidity(value, rules) {
+    checkValidity(value, rules) {
         let isValid = true;
 
         if(rules.required) {
@@ -117,8 +122,9 @@ class ContactData extends Component {
            ...updatedOrderForm[inputIdentifier]
        };
        updatedFormElement.value = event.target.value;
+       updatedFormElement.valid = this.checkValidity(updatedFormElement.value, updatedFormElement.validation);
+       updatedFormElement.touched = true;
        updatedOrderForm[inputIdentifier] = updatedFormElement;
-       updatedFormElement.valid = ContactData.checkValidity(updatedFormElement.value, updatedFormElement.validation);
        console.log(updatedFormElement);
        this.setState({
            orderForm: updatedOrderForm
@@ -178,6 +184,7 @@ class ContactData extends Component {
                         value={formElement.config.value}
                         invalid={!formElement.config.valid}
                         shouldValidate={formElement.config.validation}
+                        touched={formElement.config.touched}
                         changed={(event) => this.inputChangedHandler(event, formElement.id)}
                     />
                 ))}

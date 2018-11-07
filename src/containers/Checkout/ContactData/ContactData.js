@@ -54,17 +54,36 @@ class ContactData extends Component {
                     elementConfig: {
                         options: [{
                             value: 'deliveroo',
-                            displayValue: 'DeliverRoo'
+                            displayValue: 'Deliverroo'
                         }, {
                             value: 'ubereats',
                             displayValue: 'Uber Eats'
-                        }]
+                        },
+                            {
+                                value: 'localpickup',
+                                displayValue: 'Pickup in Store'
+                            }]
                     },
                     value: ''
                 }
         },
         loading: false
     };
+
+    inputChangedHandler = (event, inputIdentifier) => {
+        const updatedOrderForm = {
+            ...this.state.orderForm
+        };
+       const updatedFormElement = {
+           ...updatedOrderForm[inputIdentifier]
+       };
+       updatedFormElement.value = event.target.value;
+       updatedOrderForm[inputIdentifier] = updatedFormElement;
+       this.setState({
+           orderForm: updatedOrderForm
+       });
+    };
+
 
     orderHandler = (event) => {
         // prevents <form> default to reload page to send a request
@@ -121,6 +140,7 @@ class ContactData extends Component {
                         elementType={formElement.config.elementType}
                         elementConfig={formElement.config.elementConfig}
                         value={formElement.config.value}
+                        changed={(event) => this.inputChangedHandler(event, formElement.id)}
                     />
                 ))}
                 <Button btnType='Success' clicked={this.orderHandler}>PLACE ORDER</Button>

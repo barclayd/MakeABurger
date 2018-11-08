@@ -156,7 +156,7 @@ class ContactData extends Component {
                 // alert('You have chosen to continue!');
                 const order = {
                     ingredients: this.props.ingredients,
-                    price: this.props.price,
+                    price: this.props.totalPrice,
                     orderData: formData
         };
         axios.post('/orders.json', order)
@@ -219,7 +219,8 @@ class ContactData extends Component {
 
 const mapStateToProps = state => {
     return {
-        totalPrice: state.totalPrice
+        totalPrice: state.totalPrice,
+        ingredients: state.ingredients
     }
 };
 

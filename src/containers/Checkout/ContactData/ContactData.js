@@ -100,7 +100,7 @@ class ContactData extends Component {
         formIsValid: false
     };
 
-    checkValidity =(value, rules) => {
+    checkValidity = (value, rules) => {
         let isValid = true;
 
         if(rules.required) {

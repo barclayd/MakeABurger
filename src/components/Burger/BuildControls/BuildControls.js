@@ -1,4 +1,5 @@
 import React from 'react';
+import {connect} from 'react-redux';
 import BuildControl from './BuildControl/BuildControl';
 import classes from './BuildControls.css';
 
@@ -11,7 +12,7 @@ const controls = [
 
 const buildControls = (props) => (
     <div className={classes.BuildControls}>
-        <p>Current Price: <strong>£{props.price.toFixed(2)}</strong></p>
+        <p>Current Price: <strong>£{props.price}</strong></p>
         {controls.map(ctrl => (
             <BuildControl
                 key={ctrl.label}
@@ -24,9 +25,15 @@ const buildControls = (props) => (
             className={classes.OrderButton}
             onClick={props.ordered}
             disabled={!props.purchasable}>
-            ORDER
+            ORDER NOW
         </button>
     </div>
 );
 
-export default buildControls;
+const mapStateToProps = state => {
+    return {
+        totalPrice: state.totalPrice
+    }
+};
+
+export default connect(mapStateToProps)(buildControls);

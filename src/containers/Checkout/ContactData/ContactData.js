@@ -1,5 +1,7 @@
 import React, {Component} from 'react';
 import axios from '../../../axios-orders';
+import { connect } from 'react-redux';
+import * as actionTypes from '../../../store/actions';
 import Button from '../../../components/UI/Button/Button';
 import Spinner from '../../../components/UI/Spinner/Spinner';
 import Input from '../../../components/UI/Input/Input';
@@ -163,6 +165,7 @@ class ContactData extends Component {
                     loading: false
                 });
                 this.props.history.push('/');
+                this.props.onCheckoutComplete('complete');
             })
             .catch(error => {
                 this.setState({
@@ -197,7 +200,7 @@ class ContactData extends Component {
                         changed={(event) => this.inputChangedHandler(event, formElement.id)}
                     />
                 ))}
-                <Button disabled={!this.state.formIsValid}btnType='Success'>PLACE ORDER</Button>
+                <Button disabled={!this.state.formIsValid} btnType='Success'>PLACE ORDER</Button>
             </form>
             );
         if(this.state.loading) {
@@ -213,4 +216,17 @@ class ContactData extends Component {
     }
 
 }
-export default ContactData;
+
+const mapStateToProps = state => {
+    return {
+        totalPrice: state.totalPrice
+    }
+};
+
+const mapDispatchToProps = dispatch => {
+    return {
+        onCheckoutComplete: (complete) => dispatch({type: actionTypes.FLUSH_PRICE, complete: complete})
+    }
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(ContactData);

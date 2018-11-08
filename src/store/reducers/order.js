@@ -12,13 +12,13 @@ const reducer = (state = initialState, action) => {
                 ...state,
                 ingredients: action.ingredientsData
             };
-        case(actionTypes.REMOVE_INGREDIENTS):
+        case(actionTypes.ADD_INGREDINETS):
             return {
                 ...state,
                 totalPrice: action.updatedPrice,
                 ingredients: action.updatedIngredients
             };
-        case(actionTypes.ADD_INGREDINETS):
+        case(actionTypes.REMOVE_INGREDIENTS):
             return {
                 ...state,
                 totalPrice: action.updatedPrice,

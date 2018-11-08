@@ -6,13 +6,10 @@ import classes from './Toolbar.css';
 
 const toolbar = (props) => (
     <header className={classes.Toolbar}>
-        <div className={classes.menuToggle}>
-            <MenuToggle
-                isSideDrawOpen={props.openSideDrawer}
-                clicked={props.toggleSideBar} />
-        </div>
+        <MenuToggle
+            clicked={props.toggleSideBar} />
         <div className={classes.Logo}>
-            <Logo height='80%'/>
+            <Logo height='100%'/>
         </div>
         <nav className={classes.Desktop}>
             <NavigationItems />

@@ -2,7 +2,7 @@ import * as actionTypes from '../actions';
 
 const initialState = {
     ingredients: {},
-    totalPrice: 1.75
+    totalPrice: 1.25
 };
 
 const reducer = (state = initialState, action) => {

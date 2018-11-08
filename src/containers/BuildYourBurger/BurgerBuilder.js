@@ -43,6 +43,7 @@ class BurgerBuilder extends Component {
             // })
             .then(response => {
                 this.props.onRetrieveIngredientsFromDB(response.data);
+                this.props.onCheckInitalPrice();
             })
             .catch(error => {
                 this.setState({
@@ -194,7 +195,8 @@ const mapDispatchToProps = dispatch => {
     return {
         onRetrieveIngredientsFromDB: (ingredientsData) => dispatch({type: actionTypes.INGREDIENTS_DB, ingredientsData: ingredientsData}),
         onAddIngredients: (updatedIngredients, updatedPrice) => dispatch({type: actionTypes.ADD_INGREDINETS, updatedIngredients: updatedIngredients, updatedPrice: updatedPrice}),
-        onRemoveIngredients: (updatedIngredients, updatedPrice) => dispatch({type: actionTypes.REMOVE_INGREDIENTS, updatedIngredients: updatedIngredients, updatedPrice: updatedPrice})
+        onRemoveIngredients: (updatedIngredients, updatedPrice) => dispatch({type: actionTypes.REMOVE_INGREDIENTS, updatedIngredients: updatedIngredients, updatedPrice: updatedPrice}),
+        onCheckInitalPrice: () => dispatch({type: actionTypes.FLUSH_PRICE})
     }
 };
 

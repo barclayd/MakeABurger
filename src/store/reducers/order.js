@@ -24,6 +24,11 @@ const reducer = (state = initialState, action) => {
                 totalPrice: action.updatedPrice,
                 ingredients: action.updatedIngredients
             };
+        case(actionTypes.FLUSH_PRICE):
+            return {
+                ...state,
+                totalPrice: initialState.totalPrice
+            };
         default:
             return state;
     }

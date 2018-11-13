@@ -20,8 +20,7 @@ const Checkout = (props) => {
                     onCheckoutCancelled={onCheckoutCancelledHandler}
                     checkoutContinued={checkoutContinuedHandler}/>
                 <Route path={props.match.path + '/contact-data'}
-                       render={(props) => (<ContactData ingredients={props.ingredients} {...props}
-                                                   price={props.totalPrice}/>)}/>
+                       component={ContactData}/>
             </div>
         )
     };

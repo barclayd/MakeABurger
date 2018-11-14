@@ -16,13 +16,13 @@ const burgerBuilder = (state = initialState, action) => {
             return {
                 ...state,
                 totalPrice: action.updatedPrice,
-                ingredients: action.updatedIngredients
+                ingredients: action.ingredientsData
             };
         case(actionTypes.REMOVE_INGREDIENTS):
             return {
                 ...state,
                 totalPrice: action.updatedPrice,
-                ingredients: action.updatedIngredients
+                ingredients: action.ingredientsData
             };
         case(actionTypes.FLUSH_PRICE):
             return {

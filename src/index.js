@@ -5,10 +5,10 @@ import { createStore } from 'redux';
 import { Provider } from 'react-redux';
 import './index.css';
 import App from './App';
-import orderReducer from './store/reducers/burgerBuilder';
+import burgerBuilderReducer from './store/reducers/burgerBuilder';
 import * as serviceWorker from './serviceWorker';
 
-const rootReducer = orderReducer;
+const rootReducer = burgerBuilderReducer;
 
 
 const store = createStore(rootReducer, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());

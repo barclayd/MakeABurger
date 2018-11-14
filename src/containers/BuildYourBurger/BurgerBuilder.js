@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import { connect } from 'react-redux';
 import Aux from '../../hoc/Aux/Aux';
+import * as burgerBuilderActions from '../../store/actions/index';
 import * as actionTypes from '../../store/actions/actionTypes';
 import Burger from '../../components/Burger/Burger';
 import BuildControls from '../../components/Burger/BuildControls/BuildControls';
@@ -194,8 +195,8 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
     return {
         onRetrieveIngredientsFromDB: (ingredientsData) => dispatch({type: actionTypes.INGREDIENTS_DB, ingredientsData: ingredientsData}),
-        onAddIngredients: (updatedIngredients, updatedPrice) => dispatch({type: actionTypes.ADD_INGREDINETS, updatedIngredients: updatedIngredients, updatedPrice: updatedPrice}),
-        onRemoveIngredients: (updatedIngredients, updatedPrice) => dispatch({type: actionTypes.REMOVE_INGREDIENTS, updatedIngredients: updatedIngredients, updatedPrice: updatedPrice}),
+        onAddIngredients: (updatedIngredients, updatedPrice) => dispatch(burgerBuilderActions.addIngredient(updatedIngredients, updatedPrice)),
+        onRemoveIngredients: (updatedIngredients, updatedPrice) => dispatch(burgerBuilderActions.removeIngredient(updatedIngredients, updatedPrice)),
         onCheckInitialPrice: () => dispatch({type: actionTypes.FLUSH_PRICE})
     }
 };

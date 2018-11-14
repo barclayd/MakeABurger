@@ -29,29 +29,15 @@ class BurgerBuilder extends Component {
         // totalPrice: 1.25,
         purchasable: false,
         purchasing: false,
-        loading: false,
-        error: false,
-        errorMessage: null
+        // loading: false,
+        // error: false,
+        // errorMessage: null
     };
 
     componentDidMount() {
         console.log(this.props);
-        axios.get('/ingredients.json')
-            // .then(response => {
-            //     this.setState({
-            //         ingredients: response.data
-            //     })
-            // })
-            .then(response => {
-                this.props.onRetrieveIngredientsFromDB(response.data);
-                this.props.onCheckInitialPrice();
-            })
-            .catch(error => {
-                this.setState({
-                    error: true,
-                    errorMessage: error
-                })
-            })
+        this.props.onInitIngredients();
+        this.props.onCheckInitialPrice();
     }
 
     updatePurchasableState (ingredients) {
@@ -145,7 +131,7 @@ class BurgerBuilder extends Component {
         }
 
         let orderSummary = null;
-        let burger = this.state.error ? <p>Ingredients can't be loaded</p> : <Spinner />;
+        let burger = this.props.error ? <p>Ingredients can't be loaded</p> : <Spinner />;
 
         if(this.props.ingredients) {
             burger = (
@@ -165,9 +151,6 @@ class BurgerBuilder extends Component {
                     cancelBtn={this.purchaseCancelHandler}
                     price={this.props.totalPrice}/>;
             }
-        if(this.state.loading) {
-            orderSummary = <Spinner />;
-        }
 
 
 
@@ -188,16 +171,18 @@ class BurgerBuilder extends Component {
 const mapStateToProps = state => {
     return {
         ingredients: state.ingredients,
-        totalPrice: state.totalPrice
+        totalPrice: state.totalPrice,
+        error: state.error
     }
 };
 
 const mapDispatchToProps = dispatch => {
     return {
-        onRetrieveIngredientsFromDB: (ingredientsData) => dispatch({type: actionTypes.INGREDIENTS_DB, ingredientsData: ingredientsData}),
+        onInitIngredients: () => dispatch(burgerBuilderActions.initIngredients()),
+        // onRetrieveIngredientsFromDB: (ingredientsData) => dispatch({type: actionTypes.SET_INGREDIENTS, ingredientsData: ingredientsData}),
         onAddIngredients: (updatedIngredients, updatedPrice) => dispatch(burgerBuilderActions.addIngredient(updatedIngredients, updatedPrice)),
         onRemoveIngredients: (updatedIngredients, updatedPrice) => dispatch(burgerBuilderActions.removeIngredient(updatedIngredients, updatedPrice)),
-        onCheckInitialPrice: () => dispatch({type: actionTypes.FLUSH_PRICE})
+        onCheckInitialPrice: () => dispatch(burgerBuilderActions.resetPrice())
     }
 };
 

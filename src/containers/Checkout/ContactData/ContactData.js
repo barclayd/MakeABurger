@@ -226,7 +226,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        onCheckoutComplete: (complete) => dispatch({type: actionTypes.FLUSH_PRICE, complete: complete})
+        onCheckoutComplete: (complete) => dispatch({type: actionTypes.RESET_PRICE, complete: complete})
     }
 };
 

@@ -1,18 +1,19 @@
 import * as actionTypes from '../actions/actionTypes';
 
 const initialState = {
-    ingredients: {},
-    totalPrice: 1.25
+    ingredients: null,
+    totalPrice: 1.25,
+    error: false
 };
 
 const burgerBuilder = (state = initialState, action) => {
     switch(action.type) {
-        case(actionTypes.INGREDIENTS_DB):
+        case(actionTypes.SET_INGREDIENTS):
             return {
                 ...state,
                 ingredients: action.ingredientsData
             };
-        case(actionTypes.ADD_INGREDINETS):
+        case(actionTypes.ADD_INGREDIENTS):
             return {
                 ...state,
                 totalPrice: action.updatedPrice,
@@ -24,10 +25,15 @@ const burgerBuilder = (state = initialState, action) => {
                 totalPrice: action.updatedPrice,
                 ingredients: action.ingredientsData
             };
-        case(actionTypes.FLUSH_PRICE):
+        case(actionTypes.RESET_PRICE):
             return {
                 ...state,
                 totalPrice: initialState.totalPrice
+            };
+        case(actionTypes.SET_INGREDIENTS_FAILED):
+            return {
+                ...state,
+                error: action.error
             };
         default:
             return state;

@@ -46,7 +46,7 @@ class OrderSummary extends Component {
 
 const mapStateToProps = state => {
     return {
-        totalPrice: state.bgr.totalPrice
+        totalPrice: state.burgerBuilder.totalPrice
     }
 };
 

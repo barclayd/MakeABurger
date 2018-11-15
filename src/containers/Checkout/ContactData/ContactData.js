@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import { connect } from 'react-redux';
-import * as actionTypes from '../../../store/actions/actionTypes';
 import * as orderActions from '../../../store/actions/index';
 import Button from '../../../components/UI/Button/Button';
 import Spinner from '../../../components/UI/Spinner/Spinner';
@@ -158,10 +157,6 @@ class ContactData extends Component {
                     orderData: formData
         };
         this.props.onOrderBurger(order);
-        setTimeout(() => {
-            this.props.history.push('/');
-            this.props.onCheckoutComplete('complete');
-        }, 1000);
     };
 
     render() {
@@ -209,15 +204,14 @@ class ContactData extends Component {
 
 const mapStateToProps = state => {
     return {
-        totalPrice: state.bgr.totalPrice,
-        ingredients: state.bgr.ingredients,
-        loading: state.ord.loading
+        totalPrice: state.burgerBuilder.totalPrice,
+        ingredients: state.burgerBuilder.ingredients,
+        loading: state.orderBuilder.loading
     }
 };
 
 const mapDispatchToProps = dispatch => {
     return {
-        onCheckoutComplete: (complete) => dispatch({type: actionTypes.RESET_PRICE, complete: complete}),
         onOrderBurger: (orderData) => dispatch(orderActions.purchaseBurger(orderData))
     }
 };

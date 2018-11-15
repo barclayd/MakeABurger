@@ -11,8 +11,8 @@ import * as serviceWorker from './serviceWorker';
 import thunk from 'redux-thunk';
 
 const rootReducer = combineReducers({
-    bgr: burgerBuilderReducer,
-    ord: orderReducer
+    burgerBuilder: burgerBuilderReducer,
+    orderBuilder: orderReducer
 });
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;

@@ -30,12 +30,6 @@ export const setIngredientsFailed = () => {
     }
 };
 
-export const resetPrice = () => {
-    return {
-        type: actionTypes.RESET_PRICE
-    }
-};
-
 export const initIngredients = () => {
     return dispatch => {
         axios.get('/ingredients.json')

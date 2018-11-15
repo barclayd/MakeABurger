@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import { connect } from 'react-redux';
 import Aux from '../../hoc/Aux/Aux';
-import * as burgerBuilderActions from '../../store/actions/index';
+import * as actions from '../../store/actions/index';
 import Burger from '../../components/Burger/Burger';
 import BuildControls from '../../components/Burger/BuildControls/BuildControls';
 import Modal from '../../components/UI/Modal/Modal';
@@ -28,7 +28,6 @@ class BurgerBuilder extends Component {
     componentDidMount() {
         console.log(this.props);
         this.props.onInitIngredients();
-        this.props.onCheckInitialPrice();
     }
 
     updatePurchasableState (ingredients) {
@@ -97,6 +96,7 @@ class BurgerBuilder extends Component {
         // }
         // queryParams.push('price='+this.props.totalPrice);
         // const queryString = queryParams.join('&');
+        this.props.onInitPurchase();
         this.props.history.push({
             pathname: '/checkout'
         });
@@ -153,18 +153,18 @@ class BurgerBuilder extends Component {
 
 const mapStateToProps = state => {
     return {
-        ingredients: state.bgr.ingredients,
-        totalPrice: state.bgr.totalPrice,
-        error: state.bgr.error
+        ingredients: state.burgerBuilder.ingredients,
+        totalPrice: state.burgerBuilder.totalPrice,
+        error: state.burgerBuilder.error
     }
 };
 
 const mapDispatchToProps = dispatch => {
     return {
-        onInitIngredients: () => dispatch(burgerBuilderActions.initIngredients()),
-        onAddIngredients: (updatedIngredients, updatedPrice) => dispatch(burgerBuilderActions.addIngredient(updatedIngredients, updatedPrice)),
-        onRemoveIngredients: (updatedIngredients, updatedPrice) => dispatch(burgerBuilderActions.removeIngredient(updatedIngredients, updatedPrice)),
-        onCheckInitialPrice: () => dispatch(burgerBuilderActions.resetPrice())
+        onInitIngredients: () => dispatch(actions.initIngredients()),
+        onAddIngredients: (updatedIngredients, updatedPrice) => dispatch(actions.addIngredient(updatedIngredients, updatedPrice)),
+        onRemoveIngredients: (updatedIngredients, updatedPrice) => dispatch(actions.removeIngredient(updatedIngredients, updatedPrice)),
+        onInitPurchase: () => dispatch(actions.purchaseInit())
     }
 };
 

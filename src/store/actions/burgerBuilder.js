@@ -24,10 +24,9 @@ export const setIngredients = (ingredients) => {
     }
 };
 
-export const setIngredientsFailed = (error) => {
+export const setIngredientsFailed = () => {
     return {
         type: actionTypes.SET_INGREDIENTS_FAILED,
-        error: error
     }
 };
 

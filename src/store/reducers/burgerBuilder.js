@@ -11,7 +11,14 @@ const burgerBuilder = (state = initialState, action) => {
         case(actionTypes.SET_INGREDIENTS):
             return {
                 ...state,
-                ingredients: action.ingredientsData
+                // ingredients: action.ingredientsData
+                ingredients: {
+                    salad: action.ingredientsData.salad,
+                    bacon: action.ingredientsData.bacon,
+                    cheese: action.ingredientsData.cheese,
+                    meat: action.ingredientsData.meat
+                },
+                error: false
             };
         case(actionTypes.ADD_INGREDIENTS):
             return {
@@ -23,7 +30,7 @@ const burgerBuilder = (state = initialState, action) => {
             return {
                 ...state,
                 totalPrice: action.updatedPrice,
-                ingredients: action.ingredientsData
+                ingredients: action.ingredientsData,
             };
         case(actionTypes.RESET_PRICE):
             return {
@@ -33,7 +40,7 @@ const burgerBuilder = (state = initialState, action) => {
         case(actionTypes.SET_INGREDIENTS_FAILED):
             return {
                 ...state,
-                error: action.error
+                error: true
             };
         default:
             return state;

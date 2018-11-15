@@ -18,7 +18,8 @@ const burgerBuilder = (state = initialState, action) => {
                     cheese: action.ingredientsData.cheese,
                     meat: action.ingredientsData.meat
                 },
-                error: false
+                error: false,
+                totalPrice: initialState.totalPrice
             };
         case(actionTypes.ADD_INGREDIENTS):
             return {
@@ -31,11 +32,6 @@ const burgerBuilder = (state = initialState, action) => {
                 ...state,
                 totalPrice: action.updatedPrice,
                 ingredients: action.ingredientsData,
-            };
-        case(actionTypes.RESET_PRICE):
-            return {
-                ...state,
-                totalPrice: initialState.totalPrice
             };
         case(actionTypes.SET_INGREDIENTS_FAILED):
             return {

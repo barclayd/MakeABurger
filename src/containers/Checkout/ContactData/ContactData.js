@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
-import axios from '../../../axios-orders';
 import { connect } from 'react-redux';
 import * as actionTypes from '../../../store/actions/actionTypes';
+import * as orderActions from '../../../store/actions/index';
 import Button from '../../../components/UI/Button/Button';
 import Spinner from '../../../components/UI/Spinner/Spinner';
 import Input from '../../../components/UI/Input/Input';
@@ -159,19 +159,27 @@ class ContactData extends Component {
                     price: this.props.totalPrice,
                     orderData: formData
         };
-        axios.post('/orders.json', order)
-            .then(response => {
-                this.setState({
-                    loading: false
-                });
-                this.props.history.push('/');
-                this.props.onCheckoutComplete('complete');
-            })
-            .catch(error => {
-                this.setState({
-                    loading: false
-                });
-            })
+        this.props.onPurchaseBurgerStart(order);
+        setTimeout(() => {
+            this.setState({loading: true});
+            this.props.history.push('/');
+            this.props.onCheckoutComplete('complete');
+        }, 1000);
+
+        //         this.props.onCheckoutComplete('complete');
+        // axios.post('/orders.json', order)
+        //     .then(response => {
+        //         this.setState({
+        //             loading: false
+        //         });
+        //         this.props.history.push('/');
+        //         this.props.onCheckoutComplete('complete');
+        //     })
+        //     .catch(error => {
+        //         this.setState({
+        //             loading: false
+        //         });
+        //     })
     };
 
     render() {
@@ -226,7 +234,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        onCheckoutComplete: (complete) => dispatch({type: actionTypes.RESET_PRICE, complete: complete})
+        onCheckoutComplete: (complete) => dispatch({type: actionTypes.RESET_PRICE, complete: complete}),
+        onPurchaseBurgerStart: (orderData) => dispatch(orderActions.purchaseBurgerStart(orderData))
     }
 };
 

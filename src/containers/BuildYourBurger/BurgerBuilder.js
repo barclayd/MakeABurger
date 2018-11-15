@@ -2,7 +2,6 @@ import React, {Component} from 'react';
 import { connect } from 'react-redux';
 import Aux from '../../hoc/Aux/Aux';
 import * as burgerBuilderActions from '../../store/actions/index';
-import * as actionTypes from '../../store/actions/actionTypes';
 import Burger from '../../components/Burger/Burger';
 import BuildControls from '../../components/Burger/BuildControls/BuildControls';
 import Modal from '../../components/UI/Modal/Modal';
@@ -20,18 +19,10 @@ const INGREDIENT_PRICES  = {
 
 
 class BurgerBuilder extends Component {
-    // constructor() {
-    //     super();
-    //     this.purchaseHandler = this.purchaseHandler.bind(this);
-    // }
+
     state = {
-        // ingredients: null,
-        // totalPrice: 1.25,
         purchasable: false,
         purchasing: false,
-        // loading: false,
-        // error: false,
-        // errorMessage: null
     };
 
     componentDidMount() {
@@ -65,10 +56,6 @@ class BurgerBuilder extends Component {
         const priceAddition = INGREDIENT_PRICES[type];
         const oldPrice = this.props.totalPrice;
         const updatedPrice = priceAddition + oldPrice;
-        // this.setState({
-        //     totalPrice: updatedPrice,
-        //     ingredients: updatedIngredients
-        // });
         this.props.onAddIngredients(updatedIngredients, updatedPrice);
         this.updatePurchasableState(updatedIngredients);
     };
@@ -87,10 +74,6 @@ class BurgerBuilder extends Component {
         if(updatedPrice < 0) {
             updatedPrice = updatedPrice*-1;
         }
-        // this.setState({
-        //     totalPrice: updatedPrice,
-        //     ingredients: updatedIngredients
-        // });
         this.props.onRemoveIngredients(updatedIngredients, updatedPrice);
         this.updatePurchasableState(updatedIngredients);
     };
@@ -179,7 +162,6 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
     return {
         onInitIngredients: () => dispatch(burgerBuilderActions.initIngredients()),
-        // onRetrieveIngredientsFromDB: (ingredientsData) => dispatch({type: actionTypes.SET_INGREDIENTS, ingredientsData: ingredientsData}),
         onAddIngredients: (updatedIngredients, updatedPrice) => dispatch(burgerBuilderActions.addIngredient(updatedIngredients, updatedPrice)),
         onRemoveIngredients: (updatedIngredients, updatedPrice) => dispatch(burgerBuilderActions.removeIngredient(updatedIngredients, updatedPrice)),
         onCheckInitialPrice: () => dispatch(burgerBuilderActions.resetPrice())

@@ -5,6 +5,8 @@ import * as orderActions from '../../../store/actions/index';
 import Button from '../../../components/UI/Button/Button';
 import Spinner from '../../../components/UI/Spinner/Spinner';
 import Input from '../../../components/UI/Input/Input';
+import axios from '../../../axios-orders';
+import withErrorHandler from '../../../hoc/withErrorHandler/withErrorHandler';
 import classes from './ContactData.css'
 
 class ContactData extends Component {
@@ -98,7 +100,6 @@ class ContactData extends Component {
                     valid: true
                 }
         },
-        loading: false,
         formIsValid: false
     };
 
@@ -146,9 +147,6 @@ class ContactData extends Component {
     orderHandler = (event) => {
         // prevents <form> default to reload page to send a request
         event.preventDefault();
-        this.setState({
-                    loading: true
-                });
         const formData = {};
         for(let formElementIdentifier in this.state.orderForm) {
             formData[formElementIdentifier] = this.state.orderForm[formElementIdentifier].value;
@@ -159,27 +157,11 @@ class ContactData extends Component {
                     price: this.props.totalPrice,
                     orderData: formData
         };
-        this.props.onPurchaseBurgerStart(order);
+        this.props.onOrderBurger(order);
         setTimeout(() => {
-            this.setState({loading: true});
             this.props.history.push('/');
             this.props.onCheckoutComplete('complete');
         }, 1000);
-
-        //         this.props.onCheckoutComplete('complete');
-        // axios.post('/orders.json', order)
-        //     .then(response => {
-        //         this.setState({
-        //             loading: false
-        //         });
-        //         this.props.history.push('/');
-        //         this.props.onCheckoutComplete('complete');
-        //     })
-        //     .catch(error => {
-        //         this.setState({
-        //             loading: false
-        //         });
-        //     })
     };
 
     render() {
@@ -211,7 +193,7 @@ class ContactData extends Component {
                 <Button disabled={!this.state.formIsValid} btnType='Success'>PLACE ORDER</Button>
             </form>
             );
-        if(this.state.loading) {
+        if(this.props.loading) {
             form = <Spinner />;
         }
         return (
@@ -227,16 +209,17 @@ class ContactData extends Component {
 
 const mapStateToProps = state => {
     return {
-        totalPrice: state.totalPrice,
-        ingredients: state.ingredients
+        totalPrice: state.bgr.totalPrice,
+        ingredients: state.bgr.ingredients,
+        loading: state.ord.loading
     }
 };
 
 const mapDispatchToProps = dispatch => {
     return {
         onCheckoutComplete: (complete) => dispatch({type: actionTypes.RESET_PRICE, complete: complete}),
-        onPurchaseBurgerStart: (orderData) => dispatch(orderActions.purchaseBurgerStart(orderData))
+        onOrderBurger: (orderData) => dispatch(orderActions.purchaseBurger(orderData))
     }
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(ContactData);
+export default connect(mapStateToProps, mapDispatchToProps)(withErrorHandler(ContactData, axios));

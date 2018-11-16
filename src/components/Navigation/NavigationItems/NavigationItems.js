@@ -3,21 +3,25 @@ import NavigationItem from './NavigationItem/NavigationItem';
 import classes from './NavigationItems.css';
 
 const navigationItems = (props) => (
-    <ul className={classes.NavigationItems}>
+
+    // let tab = 'Login';
+    // if (props.isAuthenticated) {
+    //     tab = 'Logout'
+    // }
+        <ul className={classes.NavigationItems}>
             <NavigationItem
                 link='/'
                 exact>
-                    Burger Builder
+                Burger Builder
             </NavigationItem>
             <NavigationItem
                 link='/orders'>
-                    Orders
+                Orders
             </NavigationItem>
-        <NavigationItem
-            link='/login'>
-            Login
-        </NavigationItem>
-    </ul>
+            {!props.isAuthenticated ?
+                <NavigationItem link='/login'>Login</NavigationItem> :
+                <NavigationItem link='/logout'>Logout</NavigationItem>}
+        </ul>
 );
 
 export default navigationItems;

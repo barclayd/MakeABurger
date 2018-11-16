@@ -117,7 +117,8 @@ class Auth extends Component {
             'USER_NOT_FOUND': 'User not found',
             'TOKEN_EXPIRED': 'Please sign-in again to refresh credentials',
             'INVALID_PASSWORD': 'Username/password combination hasn\'t been found',
-            'EMAIL_NOT_FOUND': 'There is no user record corresponding to this email'
+            'EMAIL_NOT_FOUND': 'There is no user record corresponding to this email',
+            'EMAIL_EXISTS': 'Email is already registered to an account. Please login in'
         };
 
         let errorMessage = null;

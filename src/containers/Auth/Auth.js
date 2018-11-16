@@ -39,7 +39,7 @@ class Auth extends Component {
             }
         },
         formIsValid: false,
-        isSignup: true
+        isSignup: false
 };
 
     checkValidity = (value, rules) => {

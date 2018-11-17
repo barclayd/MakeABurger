@@ -5,7 +5,8 @@ export const addIngredient = (ingredientsData, updatedPrice) => {
     return {
         type: actionTypes.ADD_INGREDIENTS,
         ingredientsData: ingredientsData,
-        updatedPrice: updatedPrice
+        updatedPrice: updatedPrice,
+        building: true
     };
 };
 

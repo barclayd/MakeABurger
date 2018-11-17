@@ -6,5 +6,5 @@ purchaseBurger, purchaseBurgerStart, purchaseInit, fetchOrders
 } from './order';
 
 export {
-    auth, logout
+    auth, logout, setAuthRedirectPath
 } from './auth';

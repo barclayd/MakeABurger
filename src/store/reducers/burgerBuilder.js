@@ -4,7 +4,8 @@ import {updateObject} from "../utility";
 const initialState = {
     ingredients: null,
     totalPrice: 1.25,
-    error: false
+    error: false,
+    building: false
 };
 
 const setIngredient = (state, action) => {
@@ -16,17 +17,18 @@ const setIngredient = (state, action) => {
             meat: action.ingredientsData.meat
         },
         error: false,
-        totalPrice: initialState.totalPrice
+        totalPrice: initialState.totalPrice,
+        building: false
     });
 };
 
 const modifyIngredients = (state, action) => {
     return updateObject(state, {
         totalPrice: action.updatedPrice,
-        ingredients: action.ingredientsData
+        ingredients: action.ingredientsData,
+        building: true
         });
 };
-
 
 const burgerBuilder = (state = initialState, action) => {
     switch(action.type) {

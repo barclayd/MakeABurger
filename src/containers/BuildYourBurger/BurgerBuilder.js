@@ -26,13 +26,11 @@ class BurgerBuilder extends Component {
     };
 
     componentDidMount() {
-        console.log(this.props);
         this.props.onInitIngredients();
     }
 
     updatePurchasableState (ingredients) {
         let sum = Object.keys(ingredients);
-        console.log(sum);
         sum = Object.keys(ingredients)
             .map(igKey => {
                 return ingredients[igKey]
@@ -128,7 +126,7 @@ class BurgerBuilder extends Component {
                     <Burger ingredients={this.props.ingredients}/>
                     <BuildControls
                         isAuth={this.props.isAuthenticated}
-                        price={this.props.totalPrice}
+                        price={this.props.totalPrice.toFixed(2)}
                         ordered={this.purchaseHandler}
                         increaseIngredient={this.addIngredientsHandler}
                         decreaseIngredient={this.removeIngredientsHandler}

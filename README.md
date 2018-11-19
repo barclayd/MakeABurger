@@ -1,6 +1,8 @@
 # Build Your Burger
 Create the burger of your dreams and watch it be built before your eyes. Built using React.
 
+Deployed live: https://buildyourburger-3f325.firebaseapp.com/
+
 - [x] Styling using CSS modules, inline styling and bootstrap
 - [x] Mobile friendly and responsive design
 - [x] Loading spinners
@@ -11,15 +13,13 @@ Create the burger of your dreams and watch it be built before your eyes. Built u
 - [x] Routing functionality to visit different pages
 - [x] Pulls in data from a web-hosted Firebase dB which has historically stored sensor data
 - [x] Custom Error Handling added
-- [x] Redux utilised for state management
+- [x] Advanced Redux implemented for state management with actions and reducers
+- [x] Authentication using Firebase
 - [x] PropTypes added for validation
 - [x] Lifecycle hooks utilised
 - [x] Higher Order Components used for rendering, error handling and maintaining layout
-- [ ] Form validation?
+- [x] Form validation?
 
-### Things to implement
+### Ideas to implement in the future
 
-- Authentication
-- Advanced Redux
-- Polish implementation of Redux
 - Improve CSS styling

@@ -1,3 +1,4 @@
+import React from 'react';
 import reducer from './auth';
 import * as actionTypes from '../actions/actionTypes';
 

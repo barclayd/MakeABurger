@@ -18,7 +18,7 @@ const INGREDIENT_PRICES  = {
 };
 
 
-class BurgerBuilder extends Component {
+export class BurgerBuilder extends Component {
 
     state = {
         purchasable: false,

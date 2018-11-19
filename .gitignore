@@ -6,6 +6,9 @@
 # webstorm
 /.idea
 
+# firebase
+/.firebase
+
 # testing
 /coverage
 

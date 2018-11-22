@@ -26,7 +26,6 @@ export function* authUserSaga(action) {
     let url =
         "https://www.googleapis.com/identitytoolkit/v3/relyingparty/signupNewUser?key=AIzaSyCVlTlc5XiDZeLCHSO-TEPOr78biVPESTY";
     if (!action.isSignup) {
-        console.log(action.isSignup);
         url =
             "https://www.googleapis.com/identitytoolkit/v3/relyingparty/verifyPassword?key=AIzaSyCVlTlc5XiDZeLCHSO-TEPOr78biVPESTY";
     }

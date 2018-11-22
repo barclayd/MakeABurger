@@ -24,5 +24,5 @@ Deployed live: https://buildyourburger-3f325.firebaseapp.com/
 
 ### Ideas to implement in the future
 
-- Improve CSS styling
 - Increase ingredients list
+- Improve design of app on mobile

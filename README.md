@@ -19,6 +19,8 @@ Deployed live: https://buildyourburger-3f325.firebaseapp.com/
 - [x] Lifecycle hooks utilised
 - [x] LazyLoading
 - [x] Higher Order Components used for rendering, error handling and maintaining layout
+- [x] Implemented Redux Saga for leaner, more focused action creators
+
 
 ### Ideas to implement in the future
 

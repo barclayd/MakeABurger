@@ -5,6 +5,8 @@ Firebase used for database, authentication and hosting.
 
 Deployed live: https://buildyourburger-3f325.firebaseapp.com/
 
+![GIF](https://user-images.githubusercontent.com/39765499/48962659-a64e5480-ef7a-11e8-9d06-8c9bcff18be5.gif)
+
 - [x] Styling using CSS modules and inline styling
 - [x] Mobile friendly and responsive design
 - [x] Loading spinners

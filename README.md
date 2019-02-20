@@ -28,3 +28,4 @@ Deployed live: https://buildyourburger-3f325.firebaseapp.com/
 
 - Increase ingredients list
 - Improve design of app on mobile
+- Implement React Hooks

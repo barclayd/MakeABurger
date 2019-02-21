@@ -1,15 +1,11 @@
-import React, {Component} from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
 import Aux from '../../../hoc/Aux/Aux';
 import Button from '../../UI/Button/Button';
 
-class OrderSummary extends Component {
+const orderSummary = props => {
 
-    // This could be changed back to a stateless function
-
-    render() {
-
-        const ingredientSummary = Object.keys(this.props.ingredients)
+        const ingredientSummary = Object.keys(props.ingredients)
             .map(igKey => {
                 return (
                     <li key={igKey}>
@@ -17,7 +13,7 @@ class OrderSummary extends Component {
                         style={{textTransform: 'capitalize'}}>
                         {igKey}
                     </span>
-                        : {this.props.ingredients[igKey]}
+                        : {props.ingredients[igKey]}
                     </li>
                 )
             });
@@ -30,14 +26,13 @@ class OrderSummary extends Component {
                 <ul>
                     {ingredientSummary}
                 </ul>
-                <p>Total Price: <strong>£{Number.parseFloat(this.props.totalPrice).toFixed(2)}</strong></p>
+                <p>Total Price: <strong>£{Number.parseFloat(props.totalPrice).toFixed(2)}</strong></p>
                 <p>Continue to Checkout?</p>
-                <Button clicked={this.props.cancelBtn} btnType='Danger'>CANCEL</Button>
-                <Button clicked={this.props.continueBtn} btnType='Success'>CONTINUE</Button>
+                <Button clicked={props.cancelBtn} btnType='Danger'>CANCEL</Button>
+                <Button clicked={props.continueBtn} btnType='Success'>CONTINUE</Button>
             </Aux>
         )
-    }
-}
+};
 
 const mapStateToProps = state => {
     return {
@@ -45,4 +40,4 @@ const mapStateToProps = state => {
     }
 };
 
-export default connect(mapStateToProps)(OrderSummary);
+export default connect(mapStateToProps)(orderSummary);

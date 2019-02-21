@@ -1,14 +1,14 @@
 import React, {Component} from 'react';
 import { connect } from 'react-redux';
-import {updateObject} from "../../../store/utility";
-import * as orderActions from '../../../store/actions/index';
-import Button from '../../../components/UI/Button/Button';
-import Spinner from '../../../components/UI/Spinner/Spinner';
-import Input from '../../../components/UI/Input/Input';
-import axios from '../../../axios-orders';
-import withErrorHandler from '../../../hoc/withErrorHandler/withErrorHandler';
+import {updateObject} from "../../store/utility";
+import * as orderActions from '../../store/actions';
+import Button from '../../components/UI/Button/Button';
+import Spinner from '../../components/UI/Spinner/Spinner';
+import Input from '../../components/UI/Input/Input';
+import axios from '../../axios-orders';
+import withErrorHandler from '../../hoc/withErrorHandler/withErrorHandler';
 import classes from './ContactData.css'
-import {checkValidity} from "../../../shared/utility";
+import {checkValidity} from "../../shared/utility";
 
 class ContactData extends Component {
 
@@ -134,7 +134,6 @@ class ContactData extends Component {
         for(let formElementIdentifier in this.state.orderForm) {
             formData[formElementIdentifier] = this.state.orderForm[formElementIdentifier].value;
         }
-                // alert('You have chosen to continue!');
                 const order = {
                     ingredients: this.props.ingredients,
                     price: this.props.totalPrice,

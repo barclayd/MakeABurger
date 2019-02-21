@@ -7,11 +7,11 @@ import BurgerBuilder from "./containers/BuildYourBurger/BurgerBuilder";
 import Logout from './containers/Auth/Logout/Logout'
 
 const Checkout = React.lazy(() => {
-    return import('./containers/Checkout/Checkout');
+    return import('./components/Checkout/Checkout');
 });
 
 const Orders = React.lazy(() => {
-    return import('./containers/Orders/Orders');
+    return import('./components/Orders/Orders');
 });
 
 const Login = React.lazy(() => {
@@ -26,7 +26,7 @@ const app = props => {
 
         let routes = (
             <Switch>
-                <Route path='/login' exact  render={() => <Login />}/>
+                <Route path='/login' exact  render={(props) => <Login {...props} />}/>
                 <Route path='/' exact  component={BurgerBuilder}/>
                 <Redirect to='/'/>
             </Switch>
@@ -35,11 +35,11 @@ const app = props => {
         if (props.isAuthenticated) {
             routes = (
                 <Switch>
-                    <Route path='/login' exact  render={() => <Login />}/>
+                    <Route path='/login' exact  render={(props) => <Login {...props} />}/>
                     <Route path='/logout' exact  component={Logout}/>
                     <Route path='/' exact  component={BurgerBuilder}/>
-                    <Route path='/checkout' render={() => <Checkout />}/>
-                    <Route path='/orders' exact  render={() => <Orders />}/>
+                    <Route path='/checkout' render={(props) => <Checkout {...props} />}/>
+                    <Route path='/orders' exact  render={(props) => <Orders{...props}  />}/>
                     <Redirect to='/'/>
                 </Switch>
             )

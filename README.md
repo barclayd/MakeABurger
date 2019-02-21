@@ -3,6 +3,11 @@ Create the burger of your dreams and watch it be built before your eyes. Built u
 
 Firebase used for database, authentication and hosting.
 
+### Code style
+  [![js-standard-style](https://img.shields.io/badge/code%20style-standard-brightgreen.svg?style=flat)](https://buildyourburger-3f325.firebaseapp.com/)
+    [![js-standard-style](https://img.shields.io/badge/deployed-live-blue.svg)](https://buildyourburger-3f325.firebaseapp.com/)
+    [![js-standard-style](https://img.shields.io/badge/deployed%20version-1.0.1-red.svg)](https://buildyourburger-3f325.firebaseapp.com/)
+
 Deployed live: https://buildyourburger-3f325.firebaseapp.com/
 
 ![GIF](https://user-images.githubusercontent.com/39765499/48962659-a64e5480-ef7a-11e8-9d06-8c9bcff18be5.gif)
